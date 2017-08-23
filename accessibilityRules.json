@@ -7,42 +7,140 @@
     ]
   },
   {
-    "id": "Radio Button No Name",
-    "ErrorTooltip": "MAS requires a name attribute with all radio buttons",
+    "id": "CaptionTable",
+    "ErrorTooltip": "All Tables require a caption tag",
     "RegEx": [
-      "<input(?![^>]*\\bname=[\"].+?[\"])(?![^>]*\\btype=[\"]radio[\"])[^>]*?>"
+      "<table>(\n|.)*</table> ",
+      "<caption\\s*>.+?</caption>"
     ]
   },
   {
-    "id": "Radio Button No Label",
-    "ErrorTooltip": "MAS requires a label with all radio buttons",
-    "RegEx": [
-      "<input\\s+?(?=.*type=\"radio\")(?=.*name=\".+?\").*/>",
-      "<label.+>.+</label>"
-    ]    
-  },
-  {
-    "id": "CheckBox No Label",
-    "ErrorTooltip": "MAS requires a label with all radio buttons",
-    "RegEx": [
-      "<input\\s+?(?=.*type=\"checkbox\")(?=.*name=\".+?\").*/>",
-      "<label.+>.+</label>"
-    ]    
-  },
-  {
-    "id": "CaptionTable",
-    "ErrorTooltip": "MAS requires a label with all radio buttons",
-    "RegEx": [
-      "<table>(\n|.)*</table>",
-      "<caption\\s*>.+?</caption>"
-    ]    
-  },
-  {
     "id": "TableRow",
-    "ErrorTooltip": "MAS requires a label with all radio buttons",
+    "ErrorTooltip": "The table row tag requires a table header (th) tag",
     "RegEx": [
       "<tr>(\n|.)*?</tr>",
       "<th(?=.*scope=\".+?\")[^>]*?>.+?</th>"
-    ]    
+    ]
+  },
+  {
+    "id": "Blink Tag",
+    "ErrorTooltip": "Blink tags are prohibited. Please remove.",
+    "RegEx": [
+      "<blink.*>(\n|.)*?</blink>"
+    ]
+  },
+  {
+    "id": "Select Tag No Name",
+    "ErrorTooltip": "All Select tags require a Name Attribute",
+    "RegEx": [
+      "<select\\s*(?![^>]*\\bname=\".+?\")[^>]*?>(\n|.)*</select>"
+    ]
+  },
+  {
+    "id": "Select Tag No Label",
+    "ErrorTooltip": "All Select tags require a Label",
+    "RegEx": [
+      "<select\\s+?(?=.*name=\".+?\").*>(\n|.)*</select>",
+      "<label.+>.+</label>"
+    ]
+  },
+  {
+    "id": "Anchor Tag",
+    "ErrorTooltip": "Anchor tags requires a texual description",
+    "RegEx": [
+      "<a.*>(\n|\\s)*</a>"
+    ]
+  },
+  {
+    "id": "IFrame No Title",
+    "ErrorTooltip": "IFrame is missing a title attribute",
+    "RegEx": [
+      "<iframe(?![^>]*title=\".+?\")[^>]*?>(\n|.)*</iframe>"
+    ]
+  },
+  {
+    "id": "Frame No Title",
+    "ErrorTooltip": "Frame is missing a title attribute",
+    "RegEx": [
+      "<frame(?![^>]*title=\".+?\")[^>]*?>(\n|.)*</frame>"
+    ]
+  },
+  {
+    "id": "Object No Description",
+    "ErrorTooltip": "Object tag requires description text",
+    "RegEx": [
+      "<object.*>(\n|\\s)*</object>"
+    ]
+  },
+  {
+    "id": "Audio Tag No Track",
+    "ErrorTooltip": "Please provide a 'track' tag with this audio tag",
+    "RegEx": [
+      "<audio.*>(\n|.)*?</audio>",
+      "<track.*/>"
+    ]
+  },
+  {
+    "id": "Video Tag No Track",
+    "ErrorTooltip": "Please provide a 'track' tag with this audio tag",
+    "RegEx": [
+      "<video.*>(\n|.)*?</video>",
+      "<track.*/>"
+    ]
+  },
+  {
+    "id": "Unordered List Tag no Aria LabelledBy",
+    "ErrorTooltip": "Please add 'aria-labelledby' attribute",
+    "RegEx": [
+      "<ul(?![^>]*aria-labelledby=\".+?\")[^>]*?>(\n|.)*</ul>"
+    ]
+  },
+  {
+    "id": "Unordered List No Label",
+    "ErrorTooltip": "Please add a label with the 'id' attribute that matches this ul tags 'aria-labelledby' attribute",
+    "RegEx": [
+      "<ul\\s+?(?=.*aria-labelledby=\".+?\").*>(\n|.)*</ul>",
+      "<label.+>.+</label>"
+    ]
+  },
+  {
+    "id": "DT tag no DD tag",
+    "ErrorTooltip": "Please add an associated dd tag with this dt tag",
+    "RegEx": [
+      "<dt.*>(\n|.)*</dt\\b>(\n||.)*(?!<dd.*?>.*?</dd>)+"
+    ]
+  },
+  {
+    "id": "Figure no Figcaption",
+    "ErrorTooltip": "This figure requires a figcaption tag",
+    "RegEx": [
+      "<figure.*>(\n|\\s|.)*</figure>",
+      "<figcaption.*>.+?</figcaption>"
+    ]
+  },
+  {
+    "EnclosedTag": true,
+    "ErrorTooltip": "Checkbox needs to be enclosed in a form tag",
+    "id": "Checkbox Enclosed Form",
+    "RegEx": [
+      "<input\\s+?(?=[^>]*type=\"checkbox\")[^>]*?/>",
+      "<form.*>(\n|.)*</form>"
+    ]
+  },
+  {
+    "id": "Picture Multiple Images",
+    "ErrorTooltip": "Picture tags can only contain 1 image source.",
+    "RegEx": [
+      "<picture.*>((\n|.)*<img.*/>){2,}(\n|.)*</picture>"
+    ]
+  },
+  {
+    "id": "Form requires a submit button",
+    "ErrorTooltip": "Forms with checkboxes require a submit tag",
+    "RegEx": [
+      "<form.?>(.|\n)*</form>",
+      "<input\\s+?(?=[^>]*type=\"submit\")[^>]*?/>"
+    ],
+    "EnclosedTag": false
   }
 ]
