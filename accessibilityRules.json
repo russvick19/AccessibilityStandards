@@ -10,7 +10,7 @@
     "id": "CaptionTable",
     "ErrorTooltip": "All Tables require a caption tag",
     "RegEx": [
-      "<table>(\n|.)*</table> ",
+      "<table>(\n|.)*</table>",
       "<caption\\s*>.+?</caption>"
     ]
   },
